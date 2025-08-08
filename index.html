@@ -2,83 +2,171 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>WhatsApp Form</title>
+  <title>Garba Utsav Registration</title>
   <link rel="stylesheet" href="./main.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .form-container {
-      background: white;
-      padding: 25px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 300px;
-    }
-
-    .form-container h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .form-container input,
-    .form-container textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .form-container button {
-      width: 100%;
-      padding: 10px;
-      background: #25D366;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .form-container button:hover {
-      background: #20b358;
-    }
-  </style>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <div class="form-container">
-    <h2>Contact Us</h2>
-    <form id="whatsappForm">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
-      <textarea id="message" placeholder="Your Message" rows="4" required></textarea>
-      <button type="submit">Send on WhatsApp</button>
-    </form>
+  <div class="navbar">
+    <img src="./Assets/logo.png" alt="">
   </div>
+<div class="partner">
+  <h3>Our Management Teams And  Media Partner</h3>
+<div class="marquee">
+  <div class="marquee-content">
+    <!-- Images ek set -->
+    <img src="./Assets/pts (1).jpg" alt="">
+    <img src="./Assets/pts (1).png" alt="">
+    <img src="./Assets/pts (2).jpg" alt="">
+    <img src="./Assets/pp.png" alt="">
+    <img src="./Assets/pts (3).jpg" alt="">
+    <img src="./Assets/pts (3).png" alt="">
+    <img src="./Assets/pts (4).jpg" alt="">
+    
+    <!-- Same images dobara repeat -->
+    <img src="./Assets/pts (1).jpg" alt="">
+    <img src="./Assets/pts (1).png" alt="">
+    <img src="./Assets/pts (2).jpg" alt="">
+    <img src="./Assets/pp.png" alt="">
+    <img src="./Assets/pts (3).jpg" alt="">
+    <img src="./Assets/pts (3).png" alt="">
+    <img src="./Assets/pts (4).jpg" alt="">
+  </div>
+</div>
+</div>
 
-  <script>
-    document.getElementById('whatsappForm').addEventListener('submit', function(event) {
-      event.preventDefault();
+<div class="form-div">
 
-      var name = document.getElementById('name').value;
-      var email = document.getElementById('email').value;
-      var message = document.getElementById('message').value;
 
-      var whatsappMessage = `Hello! My name is ${name}, my email is ${email}, and my message is: ${message}`;
-      var phoneNumber = '9009059746';
-      var url = `https://wa.me/91${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+<div class="form-container">
 
-      window.open(url, '_blank');
+  <form id="whatsappForm">
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input type="number" id="age" required>
+    </div>
+
+<div class="form-group">
+  <label for="mobile">Mobile Number</label>
+  <input type="text" id="mobile" maxlength="10" required placeholder="10-digit number">
+</div>
+
+<div class="form-group">
+  <label for="email">Email</label>
+  <input type="email" id="email" required>
+</div>
+
+
+
+<div class="form-group">
+  <label for="gender">Gender</label>
+  <select id="gender" required>
+    <option value="" disabled selected>Select Gender</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Other">Other</option>
+  </select>
+</div>
+    <div class="form-group">
+      <label for="parentName">Father/Mother/Husband's Name</label>
+      <input type="text" id="parentName" required>
+    </div>
+
+<div class="form-group">
+  <label for="altMobile">Alternate Mobile Number</label>
+  <input type="text" id="altMobile" maxlength="10" required placeholder="10-digit number">
+</div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <textarea id="address" rows="3" required></textarea>
+    </div>
+
+    <button type="submit">Send via WhatsApp</button>
+  </form>
+</div>
+</div>
+
+
+
+<script>
+  // Prevent alphabets and symbols while typing
+  function allowOnlyNumbers(id) {
+    const input = document.getElementById(id);
+    input.addEventListener("input", function () {
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
     });
-  </script>
+  }
+
+  allowOnlyNumbers('mobile');
+  allowOnlyNumbers('altMobile');
+
+  // Submit handler
+  document.getElementById('whatsappForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const age = document.getElementById('age').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const gender = document.getElementById('gender').value;
+    const parentName = document.getElementById('parentName').value.trim();
+    const altMobile = document.getElementById('altMobile').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const address = document.getElementById('address').value.trim();
+
+    // Final validation check
+    if (mobile.length !== 10) {
+      alert("Please enter a valid 10-digit Mobile Number.");
+      return;
+    }
+    if (altMobile.length !== 10) {
+      alert("Please enter a valid 10-digit Alternate Mobile Number.");
+      return;
+    }
+
+
+
+    // Digit check
+  if (mobile.length !== 10) {
+    alert("Please enter a valid 10-digit Mobile Number.");
+    return;
+  }
+
+  if (altMobile.length !== 10) {
+    alert("Please enter a valid 10-digit Alternate Mobile Number.");
+    return;
+  }
+
+  // Same number check
+  if (mobile === altMobile) {
+    alert("Mobile Number and Alternate Mobile Number cannot be the same.");
+    return;
+  }
+
+  
+
+    const message =
+      `Garba Utsav Registration Form:\n` +
+      `Name: ${name}\n` +
+      `Age: ${age}\n` +
+      `Mobile: ${mobile}\n` +
+      `Gender: ${gender}\n` +
+      `Father/Mother/Husband's Name: ${parentName}\n` +
+      `Alternate Mobile: ${altMobile}\n` +
+      `Email: ${email}\n` +
+      `Address: ${address}`;
+
+    const phoneNumber = '9406655515';
+    const url = `https://wa.me/91${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, '_blank');
+  });
+</script>
+
 
 </body>
 </html>
